@@ -135,7 +135,7 @@ export default function EditTodoPage() {
                 마감 기한
               </label>
               <div
-                className={`bg-surface-container-low rounded-xl px-4 py-3 flex items-center space-x-3 ${
+                className={`bg-surface-container-low rounded-xl px-4 py-3 flex items-center space-x-3 overflow-hidden ${
                   errors.deadline ? "ring-2 ring-error/50" : ""
                 }`}
               >
@@ -144,7 +144,7 @@ export default function EditTodoPage() {
                   type="date"
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
-                  className="bg-transparent border-none p-0 text-sm w-full focus:ring-0"
+                  className="bg-transparent border-none p-0 text-sm w-full min-w-0 focus:ring-0"
                   disabled={submitting}
                 />
               </div>
@@ -153,13 +153,13 @@ export default function EditTodoPage() {
               <label className="font-headline font-bold text-on-surface-variant text-sm tracking-wide px-1">
                 마감 시간
               </label>
-              <div className="bg-surface-container-low rounded-xl px-4 py-3 flex items-center space-x-3">
+              <div className="bg-surface-container-low rounded-xl px-4 py-3 flex items-center space-x-3 overflow-hidden">
                 <span className="material-symbols-outlined text-primary text-xl">schedule</span>
                 <input
                   type="time"
                   value={time}
                   onChange={(e) => setTime(e.target.value)}
-                  className="bg-transparent border-none p-0 text-sm w-full focus:ring-0"
+                  className="bg-transparent border-none p-0 text-sm w-full min-w-0 focus:ring-0"
                   disabled={submitting}
                 />
               </div>
@@ -182,10 +182,10 @@ export default function EditTodoPage() {
                   className={`flex-1 py-3 rounded-xl text-sm active:scale-95 transition-all ${
                     priority === p.value
                       ? p.value === "High"
-                        ? "bg-tertiary-container text-white font-bold shadow-sm"
+                        ? "bg-red-500 text-white font-bold shadow-sm"
                         : p.value === "Medium"
-                        ? "bg-primary-container text-white font-bold shadow-sm"
-                        : "bg-primary-fixed text-on-primary-fixed-variant font-bold shadow-sm"
+                        ? "bg-amber-400 text-white font-bold shadow-sm"
+                        : "bg-green-500 text-white font-bold shadow-sm"
                       : "bg-surface-container-lowest text-on-surface-variant border border-outline-variant/30 font-medium"
                   }`}
                 >
