@@ -48,6 +48,12 @@ npm run dev     # http://localhost:3000
 npm run build   # Production build
 ```
 
+## Git Workflow
+- **코드 변경이 발생하면 반드시 `git add` → `git commit` → `git push origin main`을 수행한다.**
+- 커밋 메시지는 한국어로 작성하되 conventional commits prefix 사용 (`feat:`, `fix:`, `refactor:`, `style:`, `docs:` 등)
+- `stayon-next/` 내 소스 변경만 스테이징한다 (data/, stitch/ 등 비소스 폴더 제외)
+- 여러 관련 변경은 하나의 커밋으로, 무관한 변경은 분리 커밋
+
 ## Rules
 컨텍스트 지연 로딩을 위한 file-specific instructions:
 - `.github/instructions/nextjs-pages.instructions.md` — 페이지/라우팅 작업 시
