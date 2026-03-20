@@ -55,7 +55,7 @@ export default function StatsPage() {
             <span className="material-symbols-outlined text-5xl text-outline-variant mb-3 block">
               analytics
             </span>
-            <p className="text-on-surface-variant font-medium">아직 할 일이 없습니다</p>
+            <p className="text-on-surface-variant font-medium">할 일이 없습니다</p>
           </div>
         ) : (
           <>
@@ -129,7 +129,7 @@ export default function StatsPage() {
             {/* Urgent Tasks */}
             {urgentTodos.length > 0 && (
               <section className="space-y-4 pb-4">
-                <h2 className="text-on-surface font-headline font-bold text-lg">집중 과제 (긴급)</h2>
+                <h2 className="text-on-surface font-headline font-bold text-lg">마감 임박</h2>
                 <div className="space-y-3">
                   {urgentTodos.map((todo) => (
                     <div

@@ -3,7 +3,7 @@ import "./globals.css";
 import StoreHydration from "@/components/StoreHydration";
 
 export const metadata: Metadata = {
-  title: "StayOn - 할 일 관리",
+  title: "StayOn",
   description: "늘 곁에 있는 할 일 관리 앱",
 };
 

@@ -57,7 +57,7 @@ export default function HomePage() {
         {/* Summary Cards */}
         <section className="grid grid-cols-2 gap-4">
           <div className="bg-surface-container-lowest p-5 rounded-xl flex flex-col justify-between h-28 shadow-[0_4px_20px_rgba(0,0,0,0.02)]">
-            <span className="text-on-surface-variant font-medium text-sm">전체 작업</span>
+            <span className="text-on-surface-variant font-medium text-sm">전체 할일</span>
             <div className="flex items-baseline gap-1">
               <span className="text-3xl font-bold text-primary font-headline">{total}</span>
               <span className="text-on-surface-variant text-xs">건</span>

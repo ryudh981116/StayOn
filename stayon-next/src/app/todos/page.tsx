@@ -83,8 +83,8 @@ export default function TodoListPage() {
               onChange={(e) => setSortBy(e.target.value as SortOption)}
               className="w-full appearance-none px-4 py-3 bg-surface-container-low rounded-xl text-on-surface-variant text-sm font-medium border-none focus:ring-2 focus:ring-primary/20 cursor-pointer"
             >
-              <option value="priority">정렬 기준: 우선순위</option>
-              <option value="deadline">정렬 기준: 마감순</option>
+              <option value="priority">우선순위순</option>
+              <option value="deadline">마감임박순</option>
             </select>
             <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
               <span className="material-symbols-outlined text-sm text-on-surface-variant">expand_more</span>
