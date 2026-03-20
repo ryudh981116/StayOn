@@ -76,7 +76,7 @@ export default function TodoListPage() {
       {/* Todo Detail Popup */}
       {detailTodo && (
         <div
-          className="fixed inset-0 z-50 flex items-end justify-center"
+          className="fixed inset-0 z-[60] flex items-end justify-center"
           onClick={() => setDetailTodo(null)}
         >
           <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />

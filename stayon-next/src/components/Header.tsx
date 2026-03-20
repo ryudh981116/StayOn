@@ -19,11 +19,6 @@ export default function Header({ title, showBack = false, showLogo = false }: He
           <span className="text-[#557C55] font-extrabold text-2xl tracking-tighter font-headline">
             StayOn
           </span>
-          <div className="absolute right-6 flex items-center gap-4">
-            <div className="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center">
-              <span className="material-symbols-outlined text-sm">notifications</span>
-            </div>
-          </div>
         </div>
       </header>
     );

@@ -127,7 +127,7 @@ export default function HomePage() {
       {/* FAB */}
       <Link
         href="/todos/new"
-        className="fixed bottom-24 right-8 w-14 h-14 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center active:scale-90 transition-transform z-40"
+        className="fixed bottom-32 right-8 w-14 h-14 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center active:scale-90 transition-transform z-40"
       >
         <span className="material-symbols-outlined text-3xl">add</span>
       </Link>
