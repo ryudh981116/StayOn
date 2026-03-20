@@ -7,7 +7,7 @@ import BottomNav from "@/components/BottomNav";
 import PriorityBadge from "@/components/PriorityBadge";
 import ConfirmDialog, { useToast } from "@/components/ConfirmDialog";
 import { useTodoStore } from "@/store/useTodoStore";
-import { getTimeUntilDeadline, isUrgent, formatDeadline } from "@/lib/utils";
+import { getTimeUntilDeadline, isUrgent, formatDeadline, formatDeadlineFull } from "@/lib/utils";
 import { Todo } from "@/types/todo";
 
 type SortOption = "deadline" | "priority";
@@ -19,6 +19,7 @@ export default function TodoListPage() {
   const deleteTodo = useTodoStore((s) => s.deleteTodo);
   const [sortBy, setSortBy] = useState<SortOption>("priority");
   const [deleteTarget, setDeleteTarget] = useState<number | null>(null);
+  const [detailTodo, setDetailTodo] = useState<Todo | null>(null);
   const { showToast, ToastComponent } = useToast();
 
   function sortTodos(list: Todo[]): Todo[] {
@@ -42,9 +43,9 @@ export default function TodoListPage() {
 
   function barColor(priority: string, completed: boolean) {
     if (completed) return ""; // no bar for completed
-    if (priority === "High") return "bg-tertiary-container";
-    if (priority === "Medium") return "bg-primary-container";
-    return "bg-secondary-fixed-dim";
+    if (priority === "High") return "bg-red-500";
+    if (priority === "Medium") return "bg-amber-400";
+    return "bg-green-500";
   }
 
   if (!hydrated) {
@@ -71,6 +72,70 @@ export default function TodoListPage() {
         onConfirm={handleDelete}
         onCancel={() => setDeleteTarget(null)}
       />
+
+      {/* Todo Detail Popup */}
+      {detailTodo && (
+        <div
+          className="fixed inset-0 z-50 flex items-end justify-center"
+          onClick={() => setDetailTodo(null)}
+        >
+          <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
+          <div
+            className="relative w-full max-w-[480px] bg-surface-container-lowest rounded-t-3xl p-6 pb-8 animate-slide-up"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Handle bar */}
+            <div className="w-10 h-1 bg-outline-variant rounded-full mx-auto mb-5" />
+
+            {/* Priority + Status */}
+            <div className="flex items-center gap-2 mb-3">
+              <PriorityBadge priority={detailTodo.priority} size="md" />
+              {detailTodo.completed ? (
+                <span className="text-xs text-primary font-medium">완료됨</span>
+              ) : isUrgent(detailTodo.deadline) ? (
+                <span className="text-xs text-error font-medium">{getTimeUntilDeadline(detailTodo.deadline)}</span>
+              ) : null}
+            </div>
+
+            {/* Title */}
+            <h2 className="text-xl font-headline font-bold text-on-surface mb-2">{detailTodo.title}</h2>
+
+            {/* Deadline */}
+            <div className="flex items-center gap-2 text-on-surface-variant text-sm mb-4">
+              <span className="material-symbols-outlined text-base">schedule</span>
+              <span>{formatDeadlineFull(detailTodo.deadline)}</span>
+            </div>
+
+            {/* Description */}
+            {detailTodo.description ? (
+              <div className="bg-surface-container-low rounded-xl p-4 mb-5">
+                <p className="text-on-surface-variant text-sm leading-relaxed whitespace-pre-wrap">{detailTodo.description}</p>
+              </div>
+            ) : (
+              <div className="bg-surface-container-low rounded-xl p-4 mb-5">
+                <p className="text-outline text-sm italic">상세 내용이 없습니다</p>
+              </div>
+            )}
+
+            {/* Actions */}
+            <div className="flex gap-3">
+              <Link
+                href={`/todos/${detailTodo.id}/edit`}
+                className="flex-1 flex items-center justify-center gap-2 py-3 bg-primary-container text-on-primary-container rounded-xl font-bold text-sm active:scale-95 transition-transform"
+              >
+                <span className="material-symbols-outlined text-base">edit</span>
+                수정
+              </Link>
+              <button
+                onClick={() => setDetailTodo(null)}
+                className="flex-1 py-3 bg-surface-container-low text-on-surface-variant rounded-xl font-bold text-sm active:scale-95 transition-transform"
+              >
+                닫기
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       <Header title="할 일 목록" showBack />
 
@@ -123,7 +188,10 @@ export default function TodoListPage() {
                       onChange={() => toggleTodo(todo.id)}
                     />
                   </label>
-                  <div className="ml-4 flex-1 min-w-0">
+                  <div
+                    className="ml-4 flex-1 min-w-0 cursor-pointer"
+                    onClick={() => setDetailTodo(todo)}
+                  >
                     <h3 className="text-on-surface font-semibold text-sm truncate">{todo.title}</h3>
                     <div className="flex items-center gap-2 mt-1">
                       <PriorityBadge priority={todo.priority} />

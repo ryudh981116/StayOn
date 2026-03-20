@@ -23,11 +23,11 @@ export default function HomePage() {
     })
     .slice(0, 5);
 
-  // Priority → left bar color
+  // Priority → left bar color (신호등)
   function barColor(priority: string) {
-    if (priority === "High") return "bg-tertiary-container";
+    if (priority === "High") return "bg-red-500";
     if (priority === "Medium") return "bg-amber-400";
-    return "bg-primary";
+    return "bg-green-500";
   }
 
   if (!hydrated) {

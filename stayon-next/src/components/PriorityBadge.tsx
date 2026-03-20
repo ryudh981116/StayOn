@@ -5,21 +5,21 @@ interface PriorityBadgeProps {
 
 const config = {
   High: {
-    bg: "bg-tertiary-fixed",
-    text: "text-on-tertiary-fixed-variant",
-    dot: "bg-error",
+    bg: "bg-red-50",
+    text: "text-red-700",
+    dot: "bg-red-500",
     label: "긴급",
   },
   Medium: {
-    bg: "bg-primary-fixed",
-    text: "text-on-primary-fixed-variant",
-    dot: "bg-primary",
+    bg: "bg-amber-50",
+    text: "text-amber-700",
+    dot: "bg-amber-400",
     label: "보통",
   },
   Low: {
-    bg: "bg-surface-container-high",
-    text: "text-on-surface-variant",
-    dot: "bg-outline-variant",
+    bg: "bg-green-50",
+    text: "text-green-700",
+    dot: "bg-green-500",
     label: "낮음",
   },
 };
