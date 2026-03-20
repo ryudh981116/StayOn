@@ -1,0 +1,6 @@
+{
+  "framework": "nextjs",
+  "buildCommand": "cd stayon-next && npm install && npm run build",
+  "outputDirectory": "stayon-next/.next",
+  "installCommand": "cd stayon-next && npm install"
+}
